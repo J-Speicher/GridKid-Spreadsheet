@@ -1,0 +1,60 @@
+expression = arithmetic | bitwise | casting | cellVal | 
+            logicOp | relational | stats | primitive
+atom = intPrimitive | boolPrimitive | stringPrimitive | 
+            floatPrimitive
+            
+number = intPrimitive | floatPrimitive
+intPrimitive = INTEGER
+floatPrimitive = FLOAT
+boolPrimitive = BOOLEAN
+stringPrimitive = STRING
+
+arithmetic = myAdd | mySubtraction | myDiv | myMult |
+            myModulo | myExponentiation
+myAdd = number "+" number
+mySubtraction = number "-" number
+myDiv = number "/" number
+myMult = number "*" number
+myModulo = number "%" number
+myExponentiation = number "**" number
+
+bitwise = myBitAnd | myBitOr | myBitXor | myBitNot |
+            myBitLshift | myBitRshift 
+myBitAnd = intPrimitive "&" intPrimitive
+myBitOr = intPrimitive "|" intPrimitive
+myBitXor = intPrimitive "^" intPrimitive
+myBitNot = "~" intPrimitive
+myBitLshift = intPrimitive "<<" intPrimitive
+myBitRshift = intPrimitive ">>" intPrimitive
+
+casting = myFloatToInt | myIntToFloat
+myFloatToInt = floatPrimitive
+myIntToFloat = intPrimitive
+
+cellVal = myLVal | myRVal
+myLVal = "(" INTEGER "," INTEGER ")"
+myRVal = "(" INTEGER "," INTEGER ")"
+
+environment = grid
+grid = "[" INTEGER "][" INTEGER "]"
+
+logicOp = myLAnd | myLOr | myLNot
+myLAnd = boolPrimitive "&&" boolPrimitive
+myLOr = boolPrimitive "||" boolPrimitive
+myLNot = "!" boolPrimitive
+
+relational = myEquals | myNotEquals | myLessThan |
+            myGreaterThan | myLessThanOrEqual |
+            myGreaterThanOrEqual
+myEquals = primitive "==" primitive
+myNotEquals = primitive "!=" primitive
+myLessThan = number "<" number
+myGreaterThan = number ">" number
+myLessThanOrEqual = number "<=" number
+myGreaterThanOrEqual = number ">=" number
+
+stats = myMax | myMin | myMean | mySum
+myMax = "(" myLVal "," myLVal ")"
+myMin = "(" myLVal "," myLVal ")"
+myMean = "(" myLVal "," myLVal ")"
+mySum = "(" myLVal "," myLVal ")"
